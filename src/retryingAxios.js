@@ -1,8 +1,25 @@
+/**
+ * Retrying Axios
+ * 
+ * This module exports an instance of Axios with retry functionality for failed requests.
+ * It uses the axios-retry library to automatically retry failed requests based on the specified conditions.
+ * The retry conditions include network errors, retryable errors, rate limiting (429 status), and unsuccessful POST requests (404 status).
+ * 
+ * Dependencies:
+ * - axios: Promise-based HTTP client for the browser and Node.js
+ * - axios-retry: Axios plugin for automatic retrying of failed requests
+ * - logger: Custom logger module
+ * - waitTimes: Module containing wait times for retrying requests
+ * 
+ * @module retryingAxios
+ * @exports axios - An instance of Axios with retry functionality
+ */
+
 const axios = require('axios');
 const axiosRetry = require('axios-retry').default;
 const logger = require('./logger');
-const { WAIT_BETWEEN_QUERY_RETRIES } = require('./waitTimes');
-const { HTTP_RETRY_COUNT } = require('./waitTimes');
+const { WAIT_BETWEEN_QUERY_RETRIES } = require('./waitTimeConfig');
+const { HTTP_RETRY_COUNT } = require('./waitTimeConfig');
 
 // Retry every failed axios request to be able to get past transient errors
 axiosRetry(axios, {

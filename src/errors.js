@@ -1,7 +1,14 @@
+/**
+ * Logs the Axios error details.
+ *
+ * Axios error objects contain the full request, even the headers.
+ * And the header contains the API key being used.
+ * So, to be safe, we just log the message and the url.
+ *
+ * @param {string} context - The context or description of the error.
+ * @param {Error} error - The Axios error object.
+ */
 const logAxiosError = (context, error) => {
-  // Axios error objects contain the full request, even the headers.
-  // And the header contains the API key being used.
-  // So, to be safe, we just log the message and the url
   const details = {
     context,
     // All error types _should_ have this field

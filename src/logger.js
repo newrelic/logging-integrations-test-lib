@@ -6,18 +6,17 @@ const consoleTransport = new transports.Console({
   level: process.env.LOG_LEVEL || 'debug',
 });
 
-function logger(serviceName)
-{
+/**
+ * Creates a logger with the specified service name.
+ * @param {string} serviceName - The name of the service.
+ * @returns {Logger} The created logger instance.
+ */
+function logger(serviceName) {
   return createLogger({
     format: combine(
-      // Always add a timestamp to log messages
-      timestamp(),
-      // Show log messages in JSON format
-      json(),
-      // When Errors are passed directly to a logger, show their stack traces
-      // (if you pass an Error object as a meta field to a logger, you still
-      // won't get stack traces), this is only for passing directly to a logger
-      errors({ stack: true })
+      timestamp(), // Always add a timestamp to log messages
+      json(), // Show log messages in JSON format
+      errors({ stack: true }) // When Error objects are passed directly to a logger, show their stack traces
     ),
     defaultMeta: { service: serviceName },
     transports: [consoleTransport],

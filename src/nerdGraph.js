@@ -1,17 +1,21 @@
+
 const retryingAxios = require('./retryingAxios');
 const { sleep } = require('./time');
 const logger = require('./logger');
-const { HTTP_RETRY_COUNT, WAIT_BETWEEN_QUERY_RETRIES } = require('./waitTimes');
+const { HTTP_RETRY_COUNT, WAIT_BETWEEN_QUERY_RETRIES } = require('./waitTimeConfig');
 
 /**
- * Retries a call if the GraphQL response contains an error.
+ * Makes a GraphQL call with retry logic. Uses `axios-retry` to make the call.
+ *
+ * @param {string} url - The URL to make the GraphQL call to.
+ * @param {object} payload - The payload for the GraphQL call.
+ * @param {object} configuration - The configuration for the GraphQL call.
+ * @returns {Promise<object>} - A Promise that resolves to the response of the GraphQL call.
  */
 const retryingGraphQlCall = async (url, payload, configuration) => {
-  // Since we use '<=' in the for loop, response is always set before the for loop exits
-  // (one loop for the "main" call, and then one loop for each allowed retry -- the main
-  // loop is "retry=0")
   let response = null;
 
+  // we use <= to make sure we try at least once
   for (let retry = 0; retry <= HTTP_RETRY_COUNT; ++retry) {
     // Pause before retrying
     if (retry > 0) {

@@ -1,5 +1,3 @@
-const { ONE_SECOND, ONE_MINUTE } = require('./time');
-
 module.exports = {
   /**
    * How many times to retry an axios HTTP call for a "retryable" error like a network issue
@@ -13,14 +11,14 @@ module.exports = {
    * How long to wait between retrying a query -- either retrying because of an HTTP error (see retryingAxios.js),
    * or because of an error from NerdGraph (see nerdGraph.js)
    */
-  WAIT_BETWEEN_QUERY_RETRIES: 5 * ONE_SECOND,
+  WAIT_BETWEEN_QUERY_RETRIES: 5 * 1000,
 
   /**
    * How long it could take our pipeline to process data and get it into NRDB.
    * This should be long enough to cover almost 100% of possible wait times, but short
    * enough so that builds don't wait forever if there's a failure
    */
-  WAIT_FOR_PROCESSING: 4 * ONE_MINUTE,
+  WAIT_FOR_PROCESSING: 4 * 60 * 1000,
 
   /**
    * How long it ideally should take for something like 95% of messages to show up. Use this
@@ -30,14 +28,14 @@ module.exports = {
    * the message shows up after this short wait), but it's better than having to wait
    * this long time for each test.
    */
-  WAIT_FOR_NON_EXISTENCE: 5 * ONE_SECOND,
+  WAIT_FOR_NON_EXISTENCE: 5 * 1000,
 
   /**
    * How long we want to wait for a test to execute before failing it.
    * This should be long enough to cover almost 100% of possible test runs, but short
    * enough so that builds don't wait forever if they're failing
    */
-  WAIT_FOR_TEST_COMPLETION: 1 * ONE_MINUTE,
+  WAIT_FOR_TEST_COMPLETION: 1 * 60 * 1000,
 
   /**
    * This should be longer than WAIT_FOR_PROCESSING, so that when tests fail
