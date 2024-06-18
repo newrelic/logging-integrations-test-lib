@@ -1,0 +1,19 @@
+{
+  "name": "logging-integrations-test-lib",
+  "version": "1.0.0",
+  "description": "Common code for setting up and evaluating E2E test scenarios for logging",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/newrelic/logging-integrations-test-lib.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/newrelic/logging-integrations-test-lib/issues"
+  },
+  "homepage": "https://github.com/newrelic/logging-integrations-test-lib#readme"
+}
