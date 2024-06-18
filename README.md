@@ -2,7 +2,9 @@
 
 # Logging Integrations Testing Library
 
-This repo contains some common code that was originally used in multiple repositories used by the Logging Integrations team. 
+This repo contains some common code that was originally used in multiple repositories used by the Logging Integrations team. (refer to the originals for git history)
+ - [Fluent Bit Package](https://github.com/newrelic/fluent-bit-package/tree/main/integration-tests/test-suite/)
+ - [Azure Functions](https://github.com/newrelic/newrelic-azure-functions/tree/master/test-suite/)
 
 We've extracted it for ease of keeping updates synchronized. We've also added some documentation to make it easier to use.
 
