@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/newrelic/logging-integrations-test-lib/issues"
   },
-  "homepage": "https://github.com/newrelic/logging-integrations-test-lib#readme"
+  "homepage": "https://github.com/newrelic/logging-integrations-test-lib#readme",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "axios-retry": "^4.4.0",
+    "winston": "^3.13.0"
+  }
 }
