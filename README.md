@@ -2,7 +2,9 @@
 
 # Logging Integrations Testing Library
 
-This repo contains some common code that was originally used in multiple repositories used by the Logging Integrations team. We've extracted it for ease of keeping updates synchronized. We've also added docstrings to the exported functions.
+This repo contains some common code that was originally used in multiple repositories used by the Logging Integrations team. 
+
+We've extracted it for ease of keeping updates synchronized. We've also added some documentation to make it easier to use.
 
 ## Installation
 
@@ -17,18 +19,51 @@ This library exports several modules. Here's how to use them
 This function is used to require an environment variable and throws if it is not set
 
 ```js
-const { requireEnvironmentVariable } = require('logging-integrations-test-lib');
-
 const VAR_1 = requireEnvironmentVariable('ENV_VAR_1');
 ```
 
 ### nrdb
 
-This module provides functionality that allows one to check for Logs using an NRDB query.
+This module provides functionality that allows one to check for Logs using an NRDB query. The nrdb object must be constructed using an [Account object](#account).
+
+The following query functions accept a [QueryOptions](#queryoptions) object
+
+#### waitToFindOne
+
+Returns a promise that resolves to a log event recieved from NRDB.
+
+#### waitToFindAll
+
+Returns a promise that resolves to an array that contains all the matching events recieved from NRDB.
+
+#### Account
+
+Used when constructing `nrdb`
+
+| Name         | Type   | Description                                       | Required? | Default |
+|--------------|--------|---------------------------------------------------|-----------|---------|
+| accountId    | number | the account ID                                    | Yes       | -       |
+| apiKey       | string | the value to put in the Api-Key header on queries | Yes       | -       |
+| nerdGraphUrl | string | the URL of the NerdGraph API in the environment   | Yes       | -       |
+
+#### QueryOptions
+
+Used when querying events using one of the `Nrdb.find*` methods
+
+| Name                        | Type                                                               | Description                                                     | Required? | Default                    |
+|-----------------------------|--------------------------------------------------------------------|-----------------------------------------------------------------|-----------|----------------------------|
+| select                      | string                                                             | What to select                                                  | No        | `*`                        |
+| from                        | string                                                             | What event type to query                                        | No        | `Log`                      |
+| where                       | string                                                             | What to put in a `WHERE` clause                                 | No        | (none)                     |
+| limit                       | number                                                             | What to put for a `LIMIT`                                       | No        | `2000`                     |
+| wait                        | number                                                             | Time (in milliseconds) to wait for events to show up in NRDB    | No        | `WAIT_FOR_PROCESSING`      |
+| since                       | number                                                             | What to put for `SINCE`                                         | No        | `5 minutes ago`            |
+| until                       | number                                                             | What to put for `UNTIL`                                         | No        | (none)                     |
+| didNotFindAllResultsMessage | function(foundResults: array, expectedResultCount: number): string | What message to output when the query fails to find all results | No        | (a sensible error message) |
 
 ### logger
 
-This module provides a (winston)[] logger in a standardized format.
+This module provides a [winston](https://github.com/winstonjs/winston) logger in a standardized format.
 
 ### testUtils
 
