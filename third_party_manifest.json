@@ -1,0 +1,60 @@
+{
+  "lastUpdated": "Thu Jun 20 2024 23:59:07 GMT+0530 (India Standard Time)",
+  "projectName": "logging-integrations-test-lib",
+  "projectUrl": "https://github.com/newrelic/logging-integrations-test-lib",
+  "includeOptDeps": false,
+  "includeDev": true,
+  "dependencies": {
+    "axios-retry@4.4.0": {
+      "name": "axios-retry",
+      "version": "4.4.0",
+      "range": "^4.4.0",
+      "licenses": "Apache-2.0",
+      "repoUrl": "https://github.com/softonic/axios-retry",
+      "versionedRepoUrl": "https://github.com/softonic/axios-retry/tree/v4.4.0",
+      "licenseFile": "node_modules/axios-retry/LICENSE",
+      "licenseUrl": "https://github.com/softonic/axios-retry/blob/v4.4.0/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "Rubén Norte",
+      "email": "ruben.norte@softonic.com"
+    },
+    "axios@1.7.2": {
+      "name": "axios",
+      "version": "1.7.2",
+      "range": "^1.7.2",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/axios/axios",
+      "versionedRepoUrl": "https://github.com/axios/axios/tree/v1.7.2",
+      "licenseFile": "node_modules/axios/LICENSE",
+      "licenseUrl": "https://github.com/axios/axios/blob/v1.7.2/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "Matt Zabriskie"
+    },
+    "prettier@3.3.2": {
+      "name": "prettier",
+      "version": "3.3.2",
+      "range": "^3.3.2",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/prettier/prettier",
+      "versionedRepoUrl": "https://github.com/prettier/prettier/tree/v3.3.2",
+      "licenseFile": "node_modules/prettier/LICENSE",
+      "licenseUrl": "https://github.com/prettier/prettier/blob/v3.3.2/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "James Long"
+    },
+    "winston@3.13.0": {
+      "name": "winston",
+      "version": "3.13.0",
+      "range": "^3.13.0",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/winstonjs/winston",
+      "versionedRepoUrl": "https://github.com/winstonjs/winston/tree/v3.13.0",
+      "licenseFile": "node_modules/winston/LICENSE",
+      "licenseUrl": "https://github.com/winstonjs/winston/blob/v3.13.0/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "Charlie Robbins",
+      "email": "charlie.robbins@gmail.com"
+    }
+  },
+  "devDependencies": {}
+}
