@@ -4,10 +4,19 @@ const testUtils = require('./src/test-util');
 const timeUtils = require('./src/time');
 const logger = require("./src/logger");
 
-module.exports = {
-    requireEnvironmentVariable,
-    NRDB,
-    logger,
-    testUtils,
-    timeUtils
+function configure({
+    serviceName
+    }) 
+{
+    logger.setServiceName(serviceName);
+
+    return {
+        requireEnvironmentVariable,
+        NRDB,
+        logger,
+        testUtils,
+        timeUtils
+    }
 }
+
+module.exports = configure;

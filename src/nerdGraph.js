@@ -1,7 +1,7 @@
 
 const retryingAxios = require('./retryingAxios');
 const { sleep } = require('./time');
-const logger = require('./logger');
+const logger = require('./logger').getLogger();
 const { HTTP_RETRY_COUNT, WAIT_BETWEEN_QUERY_RETRIES } = require('./waitTimeConfig');
 
 /**

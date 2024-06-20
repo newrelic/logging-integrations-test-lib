@@ -6,12 +6,18 @@ const consoleTransport = new transports.Console({
   level: process.env.LOG_LEVEL || 'debug',
 });
 
+let serviceName;
+
+function setServiceName(name) {
+  serviceName = name;
+}
+
 /**
  * Creates a logger with the specified service name.
  * @param {string} serviceName - The name of the service.
  * @returns {Logger} The created logger instance.
  */
-function logger(serviceName) {
+function getLogger() {
   return createLogger({
     format: combine(
       timestamp(), // Always add a timestamp to log messages
@@ -23,4 +29,7 @@ function logger(serviceName) {
   });
 }
 
-module.exports = logger;
+module.exports = {
+  setServiceName,
+  getLogger
+};

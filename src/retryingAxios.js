@@ -17,7 +17,7 @@
 
 const axios = require('axios');
 const axiosRetry = require('axios-retry').default;
-const logger = require('./logger');
+const logger = require('./logger').getLogger();
 const { WAIT_BETWEEN_QUERY_RETRIES } = require('./waitTimeConfig');
 const { HTTP_RETRY_COUNT } = require('./waitTimeConfig');
 

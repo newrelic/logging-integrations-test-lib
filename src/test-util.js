@@ -1,6 +1,6 @@
 
 const { spawnSync } = require('child_process');
-const logger = require('./logger');
+const logger = require('./logger').getLogger();
 const { sleep } = require('./time');
 const { WAIT_BETWEEN_QUERY_RETRIES } = require('./waitTimeConfig');
 
@@ -42,12 +42,22 @@ const waitForLogMessageContaining = async (nrdb, substring, plugin) => {
  * @returns {Promise<number>} - The expected count of log messages.
  * @throws {string} - Throws an error if the count does not match the expected count.
  */
-const countAll = async (nrdb, substring, expectedCount) => {
+const countAll = async (nrdb, substring, expectedCount, plugin, tags) => {
   let nRetries = 60;
+
+  let where = `message like '%${substring}%'`;
+  where += plugin ? ` and plugin.type = '${plugin}'` : '';
+
+  if (typeof tags == 'object') {
+    for (let key in tags) {
+      if (!tags.hasOwnProperty(key)) continue;
+      where += ` and tags.${key} = '${tags[key]}'`;
+    }
+  }
 
   while (nRetries--) {
     let result = await nrdb.waitToFindOne({
-      where: `message like '%${substring}%' and plugin.type = 'azure' and tags.test = 'azureUnit' and tags.test2 = 'success'`,
+      where,
       select: 'count(*)',
     });
     if (result.count === expectedCount) return expectedCount;
