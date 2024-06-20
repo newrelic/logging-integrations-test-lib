@@ -155,7 +155,7 @@ const _waitForeverToFindAll = async (account, options, expectedCount) => {
   throw options.didNotFindAllResultsMessage(results, expectedCount);
 };
 
-function Nrdb(account) {
+function NRDB(account) {
   const defaultOptions = {
     select: '*',
     from: 'Log',
@@ -192,4 +192,4 @@ function Nrdb(account) {
   };
 }
 
-module.exports = Nrdb;
+module.exports = NRDB;
