@@ -6,7 +6,7 @@ const {
   WAIT_FOR_PROCESSING,
   DEFAULT_SINCE,
   NRQL_QUERY_TIMEOUT_IN_SECONDS,
-} = require('./waitTimes');
+} = require('./waitTimeConfig');
 const { logAxiosError } = require("./errors");
 
 const _messageComparer = (message1, message2) => {
