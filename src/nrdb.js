@@ -65,7 +65,7 @@ const _getResults = (response) => {
   }
 
   logger.error('Unhandled result type', results);
-  throw new Error('Unhandled result type');
+  throw new Error('Unhandled result type \n' + JSON.stringify(results, null, 2));
 };
 
 const _findAll = async (account, options) => {
