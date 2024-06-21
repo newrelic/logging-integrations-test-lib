@@ -60,7 +60,7 @@ const _getResults = (response) => {
     return results['uniques.cell'];
   }
 
-  if (Array.isArray(results) && results.length > 0) {
+  if (Array.isArray(results)) {
     return results;
   }
 
